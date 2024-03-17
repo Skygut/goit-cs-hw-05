@@ -21,6 +21,7 @@ def map_reduce(text):
 
 def visualize_top_words(word_counts, top_n=20):
     top_words = dict(Counter(word_counts).most_common(top_n))
+    print(top_words)
     plt.bar(top_words.keys(), top_words.values())
     plt.xlabel("Слова")
     plt.ylabel("Частота")
