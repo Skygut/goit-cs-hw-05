@@ -31,8 +31,14 @@ def visualize_top_words(word_counts, top_n=20):
 
 
 def fetch_text(url):
-    response = requests.get(url)
-    return response.text
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.text
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTP error: {e}")
+    except requests.exceptions.RequestException as e:
+        print(f"Request error: {e}")
 
 
 def main(url):
